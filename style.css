@@ -1,329 +1,140 @@
-
-@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500');
-
-@-moz-keyframes rocket-movement { 100% {-moz-transform: translate(1200px,-600px);} }
-@-webkit-keyframes rocket-movement {100% {-webkit-transform: translate(1200px,-600px); } }
-@keyframes rocket-movement { 100% {transform: translate(1200px,-600px);} }
-@-moz-keyframes spin-earth { 100% { -moz-transform: rotate(-360deg); transition: transform 20s;  } }
-@-webkit-keyframes spin-earth { 100% { -webkit-transform: rotate(-360deg); transition: transform 20s;  } }
-@keyframes spin-earth{ 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); transition: transform 20s; } }
-
-@-moz-keyframes move-astronaut {
-    100% { -moz-transform: translate(-160px, -160px);}
+@font-face {
+  font-family: "Anybody";
+  src: url("https://assets.codepen.io/1492907/Anybody.woff2") format("woff2");
 }
-@-webkit-keyframes move-astronaut {
-    100% { -webkit-transform: translate(-160px, -160px);}
-}
-@keyframes move-astronaut{
-    100% { -webkit-transform: translate(-160px, -160px); transform:translate(-160px, -160px); }
-}
-@-moz-keyframes rotate-astronaut {
-    100% { -moz-transform: rotate(-720deg);}
-}
-@-webkit-keyframes rotate-astronaut {
-    100% { -webkit-transform: rotate(-720deg);}
-}
-@keyframes rotate-astronaut{
-    100% { -webkit-transform: rotate(-720deg); transform:rotate(-720deg); }
-}
-
-@-moz-keyframes glow-star {
-    40% { -moz-opacity: 0.3;}
-    90%,100% { -moz-opacity: 1; -moz-transform: scale(1.2);}
-}
-@-webkit-keyframes glow-star {
-    40% { -webkit-opacity: 0.3;}
-    90%,100% { -webkit-opacity: 1; -webkit-transform: scale(1.2);}
-}
-@keyframes glow-star{
-    40% { -webkit-opacity: 0.3; opacity: 0.3;  }
-    90%,100% { -webkit-opacity: 1; opacity: 1; -webkit-transform: scale(1.2); transform: scale(1.2); border-radius: 999999px;}
-}
-
-.spin-earth-on-hover{
-    
-    transition: ease 200s !important;
-    transform: rotate(-3600deg) !important;
-}
-
-html, body{
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Dosis', sans-serif;
-    font-weight: 300;
-    -webkit-user-select: none; /* Safari 3.1+ */
-    -moz-user-select: none; /* Firefox 2+ */
-    -ms-user-select: none; /* IE 10+ */
-    user-select: none; /* Standard syntax */
-}
-
-.bg-purple{
-    background: url(https://wallpapercave.com/wp/wp3837738.jpg);
-    background-repeat: repeat-x;
-    background-size: cover;
-    background-position: left top;
-    height: 100%;
-    overflow: hidden;
-    
-}
-
-.custom-navbar{
-    padding-top: 15px;
-}
-
-.brand-logo{
-    margin-left: 25px;
-    margin-top: 5px;
-    display: inline-block;
-}
-
-.navbar-links{
-    display: inline-block;
-    float: right;
-    margin-right: 15px;
-    text-transform: uppercase;
-    
-    
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-/*    overflow: hidden;*/
-    display: flex; 
-    align-items: center; 
-}
-
-li {
-    float: left;
-    padding: 0px 15px;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    letter-spacing : 2px;
-    font-size: 12px;
-    
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-    -ms-transition: all 0.3s ease-in;
-    -o-transition: all 0.3s ease-in;
-    transition: all 0.3s ease-in;
-}
-
-li a:hover {
-    color: #ffcb39;
-}
-
-.btn-request{
-    padding: 10px 25px;
-    border: 1px solid #FFCB39;
-    border-radius: 100px;
-    font-weight: 400;
-}
-
-.btn-request:hover{
-    background-color: #FFCB39;
-    color: #fff;
-    transform: scale(1.05);
-    box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
-}
-
-.btn-go-home{
-    position: relative;
-    z-index: 200;
-    margin: 15px auto;
-    width: 100px;
-    padding: 10px 15px;
-    border: 1px solid #FFCB39;
-    border-radius: 100px;
-    font-weight: 400;
-    display: block;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    letter-spacing : 2px;
-    font-size: 11px;
-    
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-    -ms-transition: all 0.3s ease-in;
-    -o-transition: all 0.3s ease-in;
-    transition: all 0.3s ease-in;
-}
-
-.btn-go-home:hover{
-    background-color: #FFCB39;
-    color: #fff;
-    transform: scale(1.05);
-    box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
-}
-
-.central-body{
-/*    width: 100%;*/
-    padding: 17% 5% 10% 5%;
-    text-align: center;
-}
-body, html {
+* {
+  font-family: "Anybody";
   margin: 0;
-  height: 100%;
-  text-align: center;
-  font-family: "Oxygen Mono", monospace;
-  color: #dff9fb;
+  box-sizing: border-box;
+  color: #252525;
 }
 
-h1 {
-  text-transform: uppercase;
-  letter-spacing: 1pt;
-  font-size: 30pt;
-  margin-bottom: 15px;
+.header__top {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  padding: 1.5rem calc(100vw / 24 * 1) 0;
+  justify-content: space-between;
 }
-
-p {
-  text-align: center;
-  margin: 0;
-  text-transform: lowercase;
-  font-size: 16pt;
-  font-weight: 900;
-  width: 50%;
-  display: none;
+@media (max-width: 1080px) {
+  .header__top {
+    padding: 1.5rem 1.5rem 0;
+  }
 }
-
-#table {
-  display: table;
+.header__trigger {
+  position: relative;
+  background: none;
+  border: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+}
+.header__trigger::before, .header__trigger::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 1.5rem;
+  height: 2px;
+  border-radius: 1px;
+  background-color: currentColor;
+  top: 0;
+  transition: transform 1s cubic-bezier(0.17, 0.67, 0, 1), background-color 0.4s ease-out;
+}
+.header__trigger::before {
+  transform: translateY(10px);
+}
+.header__trigger::after {
+  transform: translateY(17px);
+}
+.header__trigger.open {
+  color: #fff;
+}
+.header__trigger.open::before {
+  transform: translateY(14px) rotate(45deg) scale(0.85);
+}
+.header__trigger.open::after {
+  transform: translateY(14px) rotate(-45deg) scale(0.85);
+}
+.header__nav {
+  overflow: scroll;
+  position: fixed;
+  background-color: #FF3C3C;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  z-index: 9;
+  padding: calc(100vw / 24 * 2);
+  color: color(Light);
+  --panel-bottom-1: 0%;
+  --panel-bottom-2: 0%;
+  --panel-bottom-3: 0%;
+  --panel-bottom-4: 0%;
+  pointer-events: none;
+  transform: translateY(-101%);
+  transition: transform 0s 0.9s;
+  -webkit-clip-path: polygon(0 0, 0 var(--panel-bottom-1), 25% var(--panel-bottom-1), 25% 0, 25% 0, 25% var(--panel-bottom-2), 50% var(--panel-bottom-2), 50% 0, 50% 0, 50% var(--panel-bottom-3), 75% var(--panel-bottom-3), 75% 0, 75% 0, 75% var(--panel-bottom-4), 100% var(--panel-bottom-4), 100% 0);
+          clip-path: polygon(0 0, 0 var(--panel-bottom-1), 25% var(--panel-bottom-1), 25% 0, 25% 0, 25% var(--panel-bottom-2), 50% var(--panel-bottom-2), 50% 0, 50% 0, 50% var(--panel-bottom-3), 75% var(--panel-bottom-3), 75% 0, 75% 0, 75% var(--panel-bottom-4), 100% var(--panel-bottom-4), 100% 0);
+}
+@media (max-width: 1080px) {
+  .header__nav {
+    padding: 8rem 1.5rem;
+  }
+}
+.header__nav.open {
+  pointer-events: all;
+  transform: translateY(0);
+  transition: transform 0s;
+}
+.header__list {
+  padding: 0;
+  list-style: none;
+}
+.header__item {
+  font-size: calc(100vw / 24 * 2);
+  font-variation-settings: "wght" 700;
+  transition: font-variation-settings 1s cubic-bezier(0.17, 0.67, 0, 1);
+}
+@media (max-width: 1080px) {
+  .header__item {
+    font-size: 2.5rem;
+  }
+}
+.header__item:hover {
+  font-variation-settings: "wght" 900;
+}
+.header__item + .header__item {
+  margin-top: 0.35em;
+}
+.header__link {
+  color: #fff;
+  text-decoration: none;
 }
 
-#centeralign {
-  display: table-cell;
-  vertical-align: middle;
+.fake-content {
+  padding: calc(100vw / 24 * 3) calc(100vw / 24 * 1);
 }
+@media (max-width: 1080px) {
+  .fake-content {
+    padding: 8rem 1.5rem;
+  }
 }
-
-.objects img{
-    z-index: 90;
-    pointer-events: none;
-
+.fake-content h1 {
+  font-size: calc(100vw / 24 * 2);
+  font-variation-settings: "wght" 700;
 }
-
-.object_rocket{
-    z-index: 95;
-    position: absolute;
-    transform: translateX(-50px);
-    top: 75%;
-    pointer-events: none;
-    animation: rocket-movement 200s linear infinite both running;
+.fake-content p {
+  width: calc(100vw / 24 * 14);
+  max-width: 100ch;
+  line-height: 1.5;
 }
-
-.object_earth{
-    position: absolute;
-    top: 20%;
-    left: 15%;
-    z-index: 90;
-/*    animation: spin-earth 100s infinite linear both;*/
+.fake-content p span {
+  background: #252525;
+  color: #fff;
 }
-
-.object_moon{
-    position: absolute;
-    top: 12%;
-    left: 25%;
-/*
-    transform: rotate(0deg);
-    transition: transform ease-in 99999999999s;
-*/
+.fake-content p:first-of-type {
+  font-size: 2rem;
+  margin-top: 1.5em;
 }
-
-.earth-moon{
-    
-}
-
-.object_astronaut{
-    animation: rotate-astronaut 200s infinite linear both alternate;
-}
-
-.box_astronaut{
-    z-index: 110 !important;
-    position: absolute;
-    top: 60%;
-    right: 20%;
-    will-change: transform;
-    animation: move-astronaut 50s infinite linear both alternate;
-}
-
-.image-404{
-    position: relative;
-    z-index: 100;
-    pointer-events: none;
-}
-
-.stars{
-    background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);
-    background-repeat: repeat;
-    background-size: contain;
-    background-position: left top;
-}
-
-.glowing_stars .star{
-    position: absolute;
-    border-radius: 100%;
-    background-color: #fff;
-    width: 3px;
-    height: 3px;
-    opacity: 0.3;
-    will-change: opacity;
-}
-
-.glowing_stars .star:nth-child(1){
-    top: 80%;
-    left: 25%;
-    animation: glow-star 2s infinite ease-in-out alternate 1s;
-}
-.glowing_stars .star:nth-child(2){
-    top: 20%;
-    left: 40%;
-    animation: glow-star 2s infinite ease-in-out alternate 3s;
-}
-.glowing_stars .star:nth-child(3){
-    top: 25%;
-    left: 25%;
-    animation: glow-star 2s infinite ease-in-out alternate 5s;
-}
-.glowing_stars .star:nth-child(4){
-    top: 75%;
-    left: 80%;
-    animation: glow-star 2s infinite ease-in-out alternate 7s;
-}
-.glowing_stars .star:nth-child(5){
-    top: 90%;
-    left: 50%;
-    animation: glow-star 2s infinite ease-in-out alternate 9s;
-}
-
-@media only screen and (max-width: 600px){
-    .navbar-links{
-        display: none;
-    }
-    
-    .custom-navbar{
-        text-align: center;
-    }
-    
-    .brand-logo img{
-        width: 120px;
-    }
-    
-    .box_astronaut{
-        top: 70%;
-    }
-    
-    .central-body{
-        padding-top: 25%;
-    }
+.fake-content p + p {
+  margin-top: 1.25em;
 }
