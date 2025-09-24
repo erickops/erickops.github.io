@@ -1,39 +1,132 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Zakiya Alifa Husna </title>
-  <link rel="stylesheet" href="./style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Scores</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 { margin-bottom: 20px; }
+    .form-input {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 8px;
+      width: 100px;
+      text-align: center;
+    }
+    button {
+      padding: 8px 15px;
+      cursor: pointer;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      width: 220px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .score {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .bar {
+      height: 12px;
+      border-radius: 6px;
+      margin-top: 10px;
+      background: linear-gradient(to right, red, yellow, green);
+      position: relative;
+    }
+    .indicator {
+      width: 3px;
+      height: 20px;
+      background: black;
+      position: absolute;
+      top: -4px;
+      transition: left 0.3s ease; /* biar halus geraknya */
+    }
+  </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div class="header">
-  <div class="header__top">
-    <button class="header__trigger"></button>
+
+  <h1>Test Scores Zakiya</h1>
+
+  <!-- Input Form -->
+  <div class="form-input">
+    <input type="number" step="0.1" id="reading" placeholder="Reading (0-100)">
+    <input type="number" step="0.1" id="writing" placeholder="Writing (0-100)">
+    <input type="number" step="0.1" id="math" placeholder="Math (0-100)">
+    <button onclick="updateScores()">Update</button>
   </div>
-  <nav class="header__nav">
-    <ul class="header__list">
-      <li class="header__item"><a class="header__link" href="-">Work</a></li>
-      <li class="header__item"><a class="header__link" href="-">About</a></li>
-      <li class="header__item"><a class="header__link" href="-">Contact</a></li>
-    </ul>
-  </nav>
-</div>
-<section class="fake-content">
-  <h1>Hello, Zakiya Alifa Husna :))</h1>
-  <p><span>Selamat berusia genap 20 tahun yaa zakiya✨.</span> Semoga dengan bertambahnya usia kamu, aku berharap semoga kehidupan kamu bisa lebih baik lagi dari sebelumnya dan segala hal maupun cita-cita yang kamu impikan bisa tercapai.</p>
-  <p>Aku berharap, kamu bisa selalu diberikan kesehatan, panjang umur dan juga mendapatkan segala hal baik di dalam hidup kamu kedepannya, dan aku berharap kalau kamu selalu ada dalam lindungan Allah</p>
-  <p>Terima kasih sudah bertahan selama hidup kurang lebih 20 tahun ini, zakiya✨ hebat, dan zakiya kuat, walaupun aku ngga tau hal-hal apa aja yang udah kamu lewatin semuanya, tetap semangat dalam menjalani hidup untuk kedepannya yaa</p>
-  <p>Aku tau, mungkin emang ngga mudah buat kamu, tapi aku akan ada di sini buat kamu, aku berharap kalau aku juga bisa ngebantu kamu untuk melewati masa-masa sulit di hidup kamu, jadii jangan segan-segan untuk andelin aku yaa, walaupun aku tahuu kalau kamu itu juga mandiri kok anaknya huhu :'( tapii aku berharap kalau kamu bisa bilang ke aku ketika kamu butuh bantuan</p>
-  <p>Zakiya Alifa Husna, kamu tau ngga, selama 20 tahun ini, zakiya itu udah membantu banyak banget orang, dan juga udah berjasa di hidup orang lain, termasuk aku. Aku mau ngucapin terima kasih banyak kalau udah memberikan warna di hidup aku, terima kasih udah jadiin hidup aku lebih berkesan dari sebelumnya, zakiya ngajarin aku banyak hal, dan itu sangat-sangat berkesan untuk aku. Aku bener-bener bersyukur bertemu kamu dan ada kamu di hidup aku</p>
-  <p>Zakiya, dan aku juga mau minta maaf kalau misal selama aku sama kamu, aku udah banyakkkk banget ngelakuin kesalahan, sering bikin kamu sedih, kecewa dan badmood. Aku minta maaf ya untuk itu, aku berharap aku bisa perbaikin semua itu. Maaf udah merepotkan</p>
-  <p>Aku bener-bener ngga nyangka kalau perempuan yang aku temuin di kisaran tahun 2013/2014 lalu, bisa ada di hidup aku sampe sekarang dan bisa sedeket ini (ya walaupun baru chat si hehe). Terkadang itu emang kita ga bisa menebak apa yang akan terjadi kedepannya di kehidupan kita, dan kita cuma ada 2 pilihan, yaitu menghadapinya, atau meninggalkannya dengan rasa penasaran. Dan aku berharap, apapun yang terjadi di kehidupan kamu kedepannya, kamu bisa melewati semua itu, kalau capek istirahat, kalau ngga kuat bisa coba untuk minta tolong ke orang di sekitar kamu atau aku.</p>
-  <p>Sekali lagi, selamat bertambah tua zakiya✨, aku berharap segala hal baik bisa selalu hadir di hidup kamu, maaf ya cuma sesederhana ini aku ngucapinnya, terima kasih juga udah menjadi manusia yang bisa berguna dan bermanfaat dan berguna untuk aku maupun orang lain, I'm so proud of you.</p>
-  <p><b>I love you, i love you in every universe ♥</b></p>
-</section>
-<!-- partial -->
-  <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script><script type="module" src="./script.js"></script>
+
+  <!-- Result Cards -->
+  <div class="container">
+    <div class="card">
+      <h3>Reading</h3>
+      <div id="readingScore" class="score">-</div>
+      <div class="bar">
+        <div id="readingIndicator" class="indicator"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Writing & Language</h3>
+      <div id="writingScore" class="score">-</div>
+      <div class="bar">
+        <div id="writingIndicator" class="indicator"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Math</h3>
+      <div id="mathScore" class="score">-</div>
+      <div class="bar">
+        <div id="mathIndicator" class="indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateScores() {
+      // Ambil nilai input (boleh decimal)
+      const reading = parseFloat(document.getElementById("reading").value) || 0;
+      const writing = parseFloat(document.getElementById("writing").value) || 0;
+      const math = parseFloat(document.getElementById("math").value) || 0;
+
+      // Update tampilan skor (maksimal 1 digit desimal)
+      document.getElementById("readingScore").innerText = reading.toFixed(1);
+      document.getElementById("writingScore").innerText = writing.toFixed(1);
+      document.getElementById("mathScore").innerText = math.toFixed(1);
+
+      // Fungsi set indikator (0–100 linear)
+      function setIndicator(indicatorId, score) {
+        let percent = (score / 100) * 100; 
+        if (percent < 0) percent = 0;
+        if (percent > 100) percent = 100;
+        document.getElementById(indicatorId).style.left = percent + "%";
+      }
+
+      // Update indikator
+      setIndicator("readingIndicator", reading);
+      setIndicator("writingIndicator", writing);
+      setIndicator("mathIndicator", math);
+    }
+  </script>
 
 </body>
 </html>
