@@ -1,132 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Scores</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kucingku Daily Checklist</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+    
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fff0f5, #f0e6ff);
+      margin: 0;
+      padding: 15px;
+      min-height: 100vh;
+      color: #333;
     }
-    h1 { margin-bottom: 20px; }
-    .form-input {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
+    
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
     }
-    input {
-      padding: 8px;
-      width: 100px;
+    
+    header {
+      background: linear-gradient(90deg, #ff8fab, #c8a2c8);
+      color: white;
+      padding: 25px 20px;
       text-align: center;
     }
-    button {
-      padding: 8px 15px;
+    
+    .title { 
+      font-size: 1.85rem; 
+      font-weight: 600; 
+      margin-bottom: 5px;
+    }
+    
+    .list { padding: 20px; }
+    
+    .cat-item {
+      display: flex;
+      align-items: center;
+      padding: 16px 18px;
+      background: #fff;
+      margin-bottom: 12px;
+      border-radius: 16px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      font-size: 1.15rem;
+    }
+    
+    .cat-item input[type="checkbox"] {
+      width: 26px;
+      height: 26px;
+      margin-right: 16px;
+      accent-color: #ff8fab;
       cursor: pointer;
     }
-    .container {
-      display: flex;
-      gap: 20px;
+    
+    .cat-name { flex: 1; }
+    
+    .checked .cat-name {
+      text-decoration: line-through;
+      opacity: 0.65;
     }
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
+    
+    .progress {
       text-align: center;
-      width: 220px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 15px 0 20px;
+      font-size: 1.2rem;
+      color: #555;
+      font-weight: 500;
     }
-    .score {
-      font-size: 2rem;
-      font-weight: bold;
-      margin: 10px 0;
+    
+    .reset-btn {
+      background: #ff8fab;
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      display: block;
+      margin: 20px auto 15px;
+      cursor: pointer;
     }
-    .bar {
-      height: 12px;
-      border-radius: 6px;
-      margin-top: 10px;
-      background: linear-gradient(to right, red, yellow, green);
-      position: relative;
+    
+    .date-bottom {
+      text-align: center;
+      font-size: 1.05rem;
+      color: #666;
+      padding: 0 20px 20px;
     }
-    .indicator {
-      width: 3px;
-      height: 20px;
-      background: black;
-      position: absolute;
-      top: -4px;
-      transition: left 0.3s ease; /* biar halus geraknya */
+    
+    .footer {
+      text-align: center;
+      padding: 15px;
+      color: #888;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-
-  <h1>Test Scores Zakiya</h1>
-
-  <!-- Input Form -->
-  <div class="form-input">
-    <input type="number" step="0.1" id="reading" placeholder="Reading (0-100)">
-    <input type="number" step="0.1" id="writing" placeholder="Writing (0-100)">
-    <input type="number" step="0.1" id="math" placeholder="Math (0-100)">
-    <button onclick="updateScores()">Lihat Skor</button>
-  </div>
-
-  <!-- Result Cards -->
   <div class="container">
-    <div class="card">
-      <h3>Reading</h3>
-      <div id="readingScore" class="score">-</div>
-      <div class="bar">
-        <div id="readingIndicator" class="indicator"></div>
-      </div>
+    <header>
+      <div class="title">🐱 Kucingku Daily</div>
+    </header>
+    
+    <div class="list" id="catList"></div>
+    
+    <div class="progress">
+      Sudah dicek: <span id="progress">0</span> / 20
     </div>
-
-    <div class="card">
-      <h3>Writing & Language</h3>
-      <div id="writingScore" class="score">-</div>
-      <div class="bar">
-        <div id="writingIndicator" class="indicator"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Math</h3>
-      <div id="mathScore" class="score">-</div>
-      <div class="bar">
-        <div id="mathIndicator" class="indicator"></div>
-      </div>
+    
+    <button class="reset-btn" onclick="resetAll()">Reset Semua Checklist</button>
+    
+    <!-- Tanggal & Hari dipindah ke bawah tombol reset -->
+    <div class="date-bottom" id="dateDisplay"></div>
+    
+    <div class="footer">
+      Made with ❤️<br>
+      Centang bebas • Data hilang jika refresh halaman
     </div>
   </div>
 
   <script>
-    function updateScores() {
-      // Ambil nilai input (boleh decimal)
-      const reading = parseFloat(document.getElementById("reading").value) || 0;
-      const writing = parseFloat(document.getElementById("writing").value) || 0;
-      const math = parseFloat(document.getElementById("math").value) || 0;
+    const cats = ["Sipit","Cakep","Koala","Kancil","Jeki","Bolu","Cici","Kribo","Caca","Abel","Luna","Oreo","Omi","Ndut","Gray","Kiko","Mimi","Oyen","Umis","Loki"];
 
-      // Update tampilan skor (maksimal 1 digit desimal)
-      document.getElementById("readingScore").innerText = reading.toFixed(1);
-      document.getElementById("writingScore").innerText = writing.toFixed(1);
-      document.getElementById("mathScore").innerText = math.toFixed(1);
+    const catList = document.getElementById('catList');
+    const dateDisplay = document.getElementById('dateDisplay');
+    const progressEl = document.getElementById('progress');
 
-      // Fungsi set indikator (0–100 linear)
-      function setIndicator(indicatorId, score) {
-        let percent = (score / 100) * 100; 
-        if (percent < 0) percent = 0;
-        if (percent > 100) percent = 100;
-        document.getElementById(indicatorId).style.left = percent + "%";
-      }
+    let checked = new Set();
 
-      // Update indikator
-      setIndicator("readingIndicator", reading);
-      setIndicator("writingIndicator", writing);
-      setIndicator("mathIndicator", math);
+    function updateDate() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      dateDisplay.textContent = now.toLocaleDateString('id-ID', options);
     }
-  </script>
 
+    function renderList() {
+      catList.innerHTML = '';
+      let count = 0;
+
+      cats.forEach(cat => {
+        const isChecked = checked.has(cat);
+        
+        const div = document.createElement('div');
+        div.className = `cat-item ${isChecked ? 'checked' : ''}`;
+        div.innerHTML = `
+          <input type="checkbox" ${isChecked ? 'checked' : ''} 
+                 onchange="toggle('${cat}', this.checked)">
+          <span class="cat-name">🐾 ${cat}</span>
+        `;
+        catList.appendChild(div);
+        
+        if (isChecked) count++;
+      });
+      
+      progressEl.textContent = count;
+    }
+
+    window.toggle = function(catName, isChecked) {
+      if (isChecked) {
+        checked.add(catName);
+      } else {
+        checked.delete(catName);
+      }
+      renderList();
+    };
+
+    window.resetAll = function() {
+      if (confirm("Reset semua checklist hari ini?")) {
+        checked.clear();
+        renderList();
+      }
+    };
+
+    // Mulai aplikasi
+    updateDate();
+    renderList();
+  </script>
 </body>
 </html>
