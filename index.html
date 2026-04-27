@@ -86,11 +86,21 @@
       cursor: pointer;
     }
     
-    .date-bottom {
+    .datetime-bottom {
       text-align: center;
-      font-size: 1.05rem;
-      color: #666;
       padding: 0 20px 20px;
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .date { 
+      font-size: 1.05rem; 
+    }
+    
+    .time {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #ff8fab;
     }
     
     .footer {
@@ -115,11 +125,14 @@
     
     <button class="reset-btn" onclick="resetAll()">Reset Semua Checklist</button>
     
-    <!-- Tanggal & Hari dipindah ke bawah tombol reset -->
-    <div class="date-bottom" id="dateDisplay"></div>
+    <!-- Tanggal, Hari, dan Waktu WIB (24 jam) -->
+    <div class="datetime-bottom">
+      <div class="date" id="dateDisplay"></div>
+      <div class="time" id="timeDisplay"></div>
+    </div>
     
     <div class="footer">
-      Made with ❤️<br>
+      Dibuat khusus buat Ricko ❤️<br>
       Centang bebas • Data hilang jika refresh halaman
     </div>
   </div>
@@ -129,14 +142,22 @@
 
     const catList = document.getElementById('catList');
     const dateDisplay = document.getElementById('dateDisplay');
+    const timeDisplay = document.getElementById('timeDisplay');
     const progressEl = document.getElementById('progress');
 
     let checked = new Set();
 
-    function updateDate() {
+    function updateDateTime() {
       const now = new Date();
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      dateDisplay.textContent = now.toLocaleDateString('id-ID', options);
+      
+      // Format Tanggal & Hari (Bahasa Indonesia)
+      const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      dateDisplay.textContent = now.toLocaleDateString('id-ID', dateOptions);
+      
+      // Format Waktu 24 jam WIB
+      let hours = now.getHours().toString().padStart(2, '0');
+      let minutes = now.getMinutes().toString().padStart(2, '0');
+      timeDisplay.textContent = `${hours}:${minutes} WIB`;
     }
 
     function renderList() {
@@ -177,9 +198,12 @@
       }
     };
 
-    // Mulai aplikasi
-    updateDate();
+    // Inisialisasi
+    updateDateTime();
     renderList();
+
+    // Update waktu setiap 10 detik
+    setInterval(updateDateTime, 10000);
   </script>
 </body>
 </html>
